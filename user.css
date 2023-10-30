@@ -1,0 +1,26 @@
+:root {
+  --bg: #15141a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+}
+
+/* CSS HOME */
+.content-1 a {
+  display: flex;
+  width: 532px;
+  padding: 10px 23px 10px 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  border: 1px solid #000;
+  background: #d76221;
+}
