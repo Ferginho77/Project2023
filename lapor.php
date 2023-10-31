@@ -19,7 +19,7 @@ $kelola_baju = query("SELECT * FROM kelola_baju");
         <a class="nav-link active" href="home.php">HOME</a>
         <a class="nav-link active" href="baju.php">BAJU</a>
         <a class="nav-link active" href="lapor.php">LAPOR</a>
-        <a class="nav-link active" href="pengiriman.php" >PENGIRIMAN</a>
+        
       </div>
   </div>
 </nav>
@@ -51,7 +51,7 @@ $kelola_baju = query("SELECT * FROM kelola_baju");
            
             <?php foreach($kelola_baju as $tampil) : ?>
 
-              <td><?= $i++ ?></td>
+              <td><?= $i ?></td>
               <td><?= $tampil["nama_baju"]; ?></td>
               <td><?= $tampil["jenis_baju"]; ?></td>
               <td><?= $tampil["ukuran_baju"]; ?></td>
@@ -60,8 +60,8 @@ $kelola_baju = query("SELECT * FROM kelola_baju");
               <td><?= $tampil["tanggal_pemasukan"]; ?></td>
               <td><?= $tampil["deskripsi"]; ?></td>
               <td>
-                <a href="#" class="btn-warning">Edit</a>
-                <a href="#" class="btn-danger">Hapus</a>
+                <a href="edit.php?id_baju=<?= $tampil["id_baju"]?>" class="btn btn-primary">Edit</a>
+                <a href="hapus.php?id_baju=<?= $tampil["id_baju"]?>" onclick="return confirm('yakin');" class="btn btn-danger">Hapus</a>
             </td>
             </tr>
             <?php $i++ ?>

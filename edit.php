@@ -1,21 +1,25 @@
 <?php 
-require'function.php';
-if(isset($_POST["submit"])) {
-    if(tambah($_POST) > 0) {
-      echo "<script>alert ('berhasil');
-      document.location.href = 'lapor.php';
-      </script>";
-    } else {
-      echo "gagal";
-    }
-
-  }
-
-
+require 'function.php';
+if(isset($_GET["id_baju"])){
+    $id_baju = $_GET["id_baju"];
+    $penjualan = query("SELECT * FROM kelola_baju WHERE id_baju = $id_baju")[0];
+    if(isset($_POST["submit"])) {
+      if(ubah($_POST) > 0) {
+          echo "<script>alert ('berhasil');
+          document.location.href = 'lapor.php';
+          </script>";
+       
+      }
+      else{
+            echo "Gagal";  
+      }
   
+    }
+  
+}
+
+
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -27,7 +31,6 @@ if(isset($_POST["submit"])) {
     <title>DZeert</title>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg bg-#292832 navbar-dark text-light">
   <div class="container-fluid ms-auto">
     <img src="img/logo.jpg.png" width="120px" height="80px">
@@ -40,8 +43,6 @@ if(isset($_POST["submit"])) {
       </div>
   </div>
 </nav>
-<div class="container">
-  <h3 class="text-center text-light mt-3">Kelola Baju</h3>
 <div class="row">
   <div class="col-md-8 mx-auto">
   <div class="card mt-5">
@@ -51,17 +52,20 @@ if(isset($_POST["submit"])) {
   </div>
   <div class="card-body">
       <form action="" method="post">
+      <input type="hidden" name="id_baju" value="<?= $penjualan["id_baju"];?>">
       <div class="mb-3">
           <label for="nama" class="form-label">Nama Baju</label>
-          <input type="text" class="form-control" name="nama_baju" id="nama_baju" placeholder="Nama Baju">
+          <input type="text" class="form-control" name="nama_baju" id="nama_baju" placeholder="Nama Baju" <?= $penjualan["nama_baju"];?>>
+          
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">Jenis Baju</label>
-          <input type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="Jenis Baju">
+          <input type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="Jenis Baju"  <?= $penjualan["jenis_baju"];?>>
+         
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">Ukuran</label>
-          <select class="form-select" name="ukuran_baju" id="ukuran_baju">
+          <select class="form-select" name="ukuran_baju" id="ukuran_baju" <?= $penjualan["ukuran_baju"];?>>
               <option>Pilih Ukuran</option>
               <option>S</option>
               <option>M</option>
@@ -69,28 +73,33 @@ if(isset($_POST["submit"])) {
               <option>XL</option>
               <option>XXL</option>
             </select>
+            
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">TambahStok</label>
-          <input type="number" class="form-control" name="tambah_stok" id="tambah_stok" placeholder="Tambah Stok">
+          <input type="number" class="form-control" name="tambah_stok" id="tambah_stok" placeholder="Tambah Stok" <?= $penjualan["tambah_stok"];?>>
+          
       </div>
         <div class="row">
             <div class="col">
             <div class="mb-3">
               <label for="nama" class="form-label">harga_jual</label>
-              <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Tambah Stok">
+              <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Harga Jual"  <?= $penjualan["harga_jual"];?>>
+             
             </div>
           </div>
             <div class="col">
             <div class="mb-3">
           <label for="nama" class="form-label">tanggal_pemasukan</label>
-          <input type="date" class="form-control" name="tanggal_pemasukan" id="tanggal_pemasukan" placeholder="Harga Jual">
+          <input type="date" class="form-control" name="tanggal_pemasukan" id="tanggal_pemasukan" placeholder="Harga Jual" <?= $penjualan["tanggal_pemasukan"];?>>
+          
             </div>
           </div>
           <div class="col">
             <div class="mb-3">
               <label for="nama" class="form-label">Deskripsi</label>
-              <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deksripsi">
+              <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deksripsi" <?= $penjualan["deskripsi"];?>>
+              
             </div>
           </div>
       </div>
@@ -107,11 +116,6 @@ if(isset($_POST["submit"])) {
 </div>
   </div>
   
-
-</div>
-
-
-
 
 </div>
 </body>

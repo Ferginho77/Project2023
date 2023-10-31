@@ -53,4 +53,37 @@ function tambah($data) {
     return mysqli_affected_rows($koneksi);
 }
 
+//MENAMBAH FUNGSI UBAH
+function ubah($data) {
+    global $koneksi;
+    $id_baju = $data["id_baju"];
+    $nama_baju = $data["nama_baju"];
+    $jenis_baju = $data["jenis_baju"];
+    $ukuran_baju = $data["ukuran_baju"];
+    $tambah_stok = $data["tambah_stok"];
+    $harga_jual = $data["harga_jual"];
+    $tanggal_pemasukan = $data["tanggal_pemasukan"];
+    $deskripsi = $data["deskripsi"];
+
+$query = "UPDATE kelola_baju SET
+                nama_baju = '$nama_baju',
+                jenis_baju = '$jenis_baju',
+                ukuran_baju = '$ukuran_baju',
+                tambah_stok = '$tambah_stok',
+                harga_jual = '$harga_jual',
+                tanggal_pemasukan = '$tanggal_pemasukan',
+                deskripsi = '$deskripsi'
+                WHERE id_baju = $id_baju";
+
+mysqli_query($koneksi, $query);
+return mysqli_affected_rows($koneksi);
+}
+
+
+//FUNGSI HAPUS
+function hapus($id_baju) {
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM  kelola_baju WHERE id_baju = $id_baju");
+    return mysqli_affected_rows($koneksi);
+}
 ?>

@@ -14,8 +14,8 @@
      <div class="navbar-nav mr-10 text-light">
         <a class="nav-link active" href="home.php">HOME</a>
         <a class="nav-link active" href="baju.php">BAJU</a>
-        <a class="nav-link active" href="pegawai.php">PEGAWAI</a>
-        <a class="nav-link active" href="pengiriman.php" >PENGIRIMAN</a>
+        <a class="nav-link active" href="lapor.php">LAPOR</a>
+       
       </div>
   </div>
 </nav>
