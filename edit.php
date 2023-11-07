@@ -1,5 +1,6 @@
 <?php 
 require 'function.php';
+$id_baju = $_GET["id_baju"];
 if(isset($_GET["id_baju"])){
     $id_baju = $_GET["id_baju"];
     $penjualan = query("SELECT * FROM kelola_baju WHERE id_baju = $id_baju")[0];
@@ -55,17 +56,17 @@ if(isset($_GET["id_baju"])){
       <input type="hidden" name="id_baju" value="<?= $penjualan["id_baju"];?>">
       <div class="mb-3">
           <label for="nama" class="form-label">Nama Baju</label>
-          <input type="text" class="form-control" name="nama_baju" id="nama_baju" placeholder="Nama Baju" <?= $penjualan["nama_baju"];?>>
+          <input value="<?= $penjualan["nama_baju"]; ?>" type="text" class="form-control" name="nama_baju" id="nama_baju" placeholder="Nama Baju" <?= $penjualan["nama_baju"];?>>
           
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">Jenis Baju</label>
-          <input type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="Jenis Baju"  <?= $penjualan["jenis_baju"];?>>
+          <input value='<?= $penjualan["jenis_baju"]; ?>' type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="Jenis Baju"  <?= $penjualan["jenis_baju"];?>>
          
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">Ukuran</label>
-          <select class="form-select" name="ukuran_baju" id="ukuran_baju" <?= $penjualan["ukuran_baju"];?>>
+          <select value='<?= $penjualan["ukuran_baju"]; ?>' class="form-select" name="ukuran_baju" id="ukuran_baju" <?= $penjualan["ukuran_baju"];?>>
               <option>Pilih Ukuran</option>
               <option>S</option>
               <option>M</option>
@@ -76,29 +77,29 @@ if(isset($_GET["id_baju"])){
             
       </div>
       <div class="mb-3">
-          <label for="nama" class="form-label">TambahStok</label>
-          <input type="number" class="form-control" name="tambah_stok" id="tambah_stok" placeholder="Tambah Stok" <?= $penjualan["tambah_stok"];?>>
+          <label for="nama" class="form-label">Tambah Stok</label>
+          <input value='<?= $penjualan["tambah_stok"]; ?>' type="number" class="form-control" name="tambah_stok" id="tambah_stok" placeholder="Tambah Stok" <?= $penjualan["tambah_stok"];?>>
           
       </div>
         <div class="row">
             <div class="col">
             <div class="mb-3">
               <label for="nama" class="form-label">harga_jual</label>
-              <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Harga Jual"  <?= $penjualan["harga_jual"];?>>
+              <input value='<?= $penjualan["harga_jual"]; ?>' type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Harga Jual"  <?= $penjualan["harga_jual"];?>>
              
             </div>
           </div>
             <div class="col">
             <div class="mb-3">
           <label for="nama" class="form-label">tanggal_pemasukan</label>
-          <input type="date" class="form-control" name="tanggal_pemasukan" id="tanggal_pemasukan" placeholder="Harga Jual" <?= $penjualan["tanggal_pemasukan"];?>>
+          <input value='<?= $penjualan["tanggal_pemasukan"]; ?>' type="date" class="form-control" name="tanggal_pemasukan" id="tanggal_pemasukan" placeholder="Harga Jual" <?= $penjualan["tanggal_pemasukan"];?>>
           
             </div>
           </div>
           <div class="col">
             <div class="mb-3">
               <label for="nama" class="form-label">Deskripsi</label>
-              <input type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deksripsi" <?= $penjualan["deskripsi"];?>>
+              <input value='<?= $penjualan["deskripsi"]; ?>' type="text" class="form-control" name="deskripsi" id="deskripsi" placeholder="Deksripsi" <?= $penjualan["deskripsi"];?>>
               
             </div>
           </div>

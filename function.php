@@ -66,6 +66,7 @@ function ubah($data) {
     $deskripsi = $data["deskripsi"];
 
 $query = "UPDATE kelola_baju SET
+                id_baju = '$id_baju',
                 nama_baju = '$nama_baju',
                 jenis_baju = '$jenis_baju',
                 ukuran_baju = '$ukuran_baju',
