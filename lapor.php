@@ -11,18 +11,7 @@ $kelola_baju = query("SELECT * FROM kelola_baju");
     <link rel="stylesheet" href="user.css">
     <title>DZeert</title>
 <body>
-<nav class="navbar navbar-expand-lg bg-#292832 navbar-dark text-light">
-  <div class="container-fluid ms-auto">
-    <img src="img/logo.jpg.png" width="120px" height="80px">
-
-     <div class="navbar-nav mr-10 text-light">
-        <a class="nav-link active" href="home.php">HOME</a>
-        <a class="nav-link active" href="baju.php">BAJU</a>
-        <a class="nav-link active" href="lapor.php">LAPOR</a>
-        
-      </div>
-  </div>
-</nav>
+<?php require'layouts/navbar.php'?>
 <div class="card text-center mt-5">
   
   <div class="card-header bg-secondary text-light">
