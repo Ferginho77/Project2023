@@ -82,9 +82,136 @@ return mysqli_affected_rows($koneksi);
 
 
 //FUNGSI HAPUS
+
 function hapus($id_baju) {
     global $koneksi;
     mysqli_query($koneksi, "DELETE FROM  kelola_baju WHERE id_baju = $id_baju");
+    return mysqli_affected_rows($koneksi);
+}
+
+//MEMBUAT FUNGSI TAMBAH PEGAWAI
+
+function pegawai($data) {
+    global $koneksi;
+    $nama = $data["nama"];
+    $email = $data["email"];
+    $alamat = $data["alamat"];
+    $jenis_kelamin = $data["jenis_kelamin"];
+
+ mysqli_query($koneksi,"INSERT INTO kelola_pegawai VALUES ('','$nama','$email','$alamat','$jenis_kelamin')");
+ return mysqli_affected_rows($koneksi);
+}
+//HAPUS PEGAWAI
+
+function delete($id_pegawai) {
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM  kelola_pegawai WHERE id_pegawai = $id_pegawai");
+    return mysqli_affected_rows($koneksi);
+}
+
+//EDIT PEGAWAI
+function edit($data) {
+    global $koneksi;
+    $id_pegawai = $data["id_pegawai"];
+    $nama = $data["nama"];
+    $email = $data["email"];
+    $alamat = $data["alamat"];
+    $jenis_kelamin = $data["jenis_kelamin"];
+
+$query = "UPDATE kelola_pegawai SET
+                id_pegawai = '$id_pegawai',
+                nama = '$nama',
+                email = '$email',
+                alamat = '$alamat',
+                jenis_kelamin = '$jenis_kelamin'
+                WHERE id_pegawai = $id_pegawai";
+
+mysqli_query($koneksi, $query);
+return mysqli_affected_rows($koneksi);
+}
+
+
+
+//FUNGSI PENJUALAN
+function penjualan($data) {
+    global $koneksi;
+    $tanggal_penjualan = $data["tanggal_penjualan"];
+    $jumlah = $data["jumlah"];
+    $harga = $data["harga"];
+    $jenis_baju = $data["jenis_baju"];
+
+ mysqli_query($koneksi,"INSERT INTO kelola_penjualan VALUES ('','$tanggal_penjualan','$jumlah','$harga','$jenis_baju')");
+ return mysqli_affected_rows($koneksi);
+}
+
+function del($id_penjualan) {
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM  kelola_penjualan WHERE id_penjualan = $id_penjualan");
+    return mysqli_affected_rows($koneksi);
+}
+
+    function edite($data) {
+        global $koneksi;
+        $id_penjualan = $data["id_penjualan"];
+        $tanggal_penjualan = $data["tanggal_penjualan"];
+        $jumlah = $data["jumlah"];
+        $harga = $data["harga"];
+        $jenis_baju = $data["jenis_baju"];
+        
+    
+    $query = "UPDATE kelola_penjualan SET
+                    id_penjualan = '$id_penjualan',
+                    tanggal_penjualan = '$tanggal_penjualan',
+                    jumlah = '$jumlah',
+                    harga = '$harga',
+                    jenis_baju = '$jenis_baju'
+                    WHERE id_penjualan = $id_penjualan";
+    
+    mysqli_query($koneksi, $query);
+    return mysqli_affected_rows($koneksi);
+    }
+
+
+
+//FUNGSI PENGIRIMAN
+function pengiriman($data) {
+    global $koneksi;
+    $no_resi = $data["no_resi"];
+    $nama_penerima = $data["nama_penerima"];
+    $alamat_penerima = $data["alamat_penerima"];
+    $telepon_penerima = $data["telepon_penerima"];
+    $kode_pos = $data["kode_pos"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
+    $catatan_pengiriman = $data["catatan_pengiriman"];
+
+ mysqli_query($koneksi,"INSERT INTO kelola_pengiriman VALUES ('','$no_resi','$nama_penerima','$alamat_penerima','$telepon_penerima','$kode_pos','$jenis_pengiriman','$catatan_pengiriman')");
+ return mysqli_affected_rows($koneksi);
+}
+
+function apus($id_pengiriman) {
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM  kelola_pengiriman WHERE id_pengiriman = $id_pengiriman");
+    return mysqli_affected_rows($koneksi);
+}
+
+
+//FUNGSI TRANSAKSI
+function transaksi($data) {
+    global $koneksi;
+    $tanggal_transaksi = $data["tanggal_transaksi"];
+    $jenis_barang = $data["jenis_barang"];
+    $jumlah = $data["jumlah"];
+    $harga = $data["harga"];
+    $catatan_transaksi = $data["catatan_transaksi"];
+   
+
+ mysqli_query($koneksi,"INSERT INTO kelola_transaksi VALUES ('','$tanggal_transaksi','$jenis_barang','$jumlah','$harga','$catatan_transaksi')");
+ return mysqli_affected_rows($koneksi);
+}
+
+function yamsah($id_transaksi) {
+    global $koneksi;
+    mysqli_query($koneksi, "DELETE FROM  kelola_transaksi WHERE id_transaksi = $id_transaksi");
     return mysqli_affected_rows($koneksi);
 }
 ?>

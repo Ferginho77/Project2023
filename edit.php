@@ -1,37 +1,28 @@
 <?php 
-require 'function.php';
+require'function.php';
 $id_baju = $_GET["id_baju"];
-if(isset($_GET["id_baju"])){
-    $id_baju = $_GET["id_baju"];
-    $penjualan = query("SELECT * FROM kelola_baju WHERE id_baju = $id_baju")[0];
-    if(isset($_POST["submit"])) {
-      if(ubah($_POST) > 0) {
-          echo "<script>alert ('berhasil');
-          document.location.href = 'lapor.php';
-          </script>";
-       
+  if(isset($_GET["id_baju"])){
+      $id_baju = $_GET["id_baju"];
+      $penjualan = query("SELECT * FROM kelola_baju WHERE id_baju = $id_baju")[0];
+      if(isset($_POST["submit"])) {
+        if(ubah($_POST) > 0) {
+            echo "<script>alert ('berhasil');
+            document.location.href = 'lapor.php';
+            </script>";
+         
+        }
+        else{
+              echo "Gagal";  
+        }
+    
       }
-      else{
-            echo "Gagal";  
-      }
-  
-    }
-  
-}
+    
+  }
 
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@100&family=Poppins:wght@200&family=Sacramento&family=Work+Sans:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="user.css">
-    <title>DZeert</title>
-</head>
-<body>
 <?php require'layouts/navbar.php'?>
 <div class="row">
   <div class="col-md-8 mx-auto">
@@ -108,5 +99,3 @@ if(isset($_GET["id_baju"])){
   
 
 </div>
-</body>
-</html>

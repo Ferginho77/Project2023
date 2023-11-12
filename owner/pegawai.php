@@ -13,7 +13,7 @@ if(isset($_POST["submit"])) {
 
 ?>
 
-<?php require'layouts/navbar.php'?>
+<?php require'../layouts/navbar_owner.php'?>
 <div class="container">
   <h3 class="text-center text-light mt-3">Kelola Pegawai</h3>
 <div class="row">

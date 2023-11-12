@@ -1,30 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@100&family=Poppins:wght@200&family=Sacramento&family=Work+Sans:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="user.css">
-    <title>About</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg bg-#292832 navbar-dark text-light">
-  <div class="container-fluid ms-auto">
-    <img src="img/logo.jpg.png" width="120px" height="80px">
+<?php
+require'function.php';
+if(isset($_POST["submit"])) {
+  if(pengiriman($_POST) > 0) {
+    echo "<script>alert ('berhasil');
+    document.location.href = 'lapor.php';
+    </script>";
+  } else {
+    echo "gagal";
+  }
+}
 
-     <div class="navbar-nav mr-10 text-light">
-        <a class="nav-link active" href="home.php">HOME</a>
-        <a class="nav-link active" href="baju.php">BAJU</a>
-        <a class="nav-link active" href="pegawai.php">PEGAWAI</a>
-        <a class="nav-link active" href="pengiriman.php" >PENGIRIMAN</a>
-      </div>
+
+?>
+
+
+<?php require'layouts/navbar.php';?>
+<div class="container">
+  <h3 class="text-center text-light mt-3">Kelola Pengiriman</h3>
+<div class="row">
+  <div class="col-md-8 mx-auto">
+  <div class="card mt-5">
+  
+  <div class="card-header bg-secondary text-light">
+    Form Input Data Pengiriman
   </div>
-</nav>
-<div class="container mt-5 text-light">
-    <h1 class="text-center">Tentang Kami</h1>
-    <h3 class="ms-start">Apa Itu <b>DZeert?</b></h3>
-    <h6>DZeert adalah website untuk memesan 
-baju secara instan dan ngga ribet,
-DZeert website terpercaya di seluruh Wakanda.</h6>
+  <div class="card-body text-dark">
+      <form action="" method="post">
+      <div class="mb-3">
+          <label for="nama" class="form-label"><i data-feather="user"></i>No Resi </label>
+          <input type="text" class="form-control" name="no_resi" id="no_resi" placeholder="No Resi">
+      </div>
+      <div class="mb-3">
+          <label for="nama" class="form-label"><i data-feather="user"></i>Nama Penerima </label>
+          <input type="text" class="form-control" name="nama_penerima" id="nama_penerima" placeholder="Nama Penerima">
+      </div>
+      <div class="mb-3">
+          <label for="email" class="form-label">Alamat</label>
+          <input type="text" class="form-control" name="alamat_penerima" id="alamat_penerima" placeholder="Alamat">
+      </div>
+      <div class="mb-3">
+          <label for="nama" class="form-label">Telepon Penerima</label>
+          <input type="text" class="form-control" name="telepon_penerima" id="telepon_penerima" placeholder="Telepon Penerima">
+      </div>
+      <div class="mb-3">
+          <label for="nama" class="form-label">Kode Pos</label>
+          <input type="text" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos">
+      </div>
+      <div class="mb-3">
+          <label for="nama" class="form-label">Jenis pengiriman</label>
+          <select class="form-select" name="jenis_pengiriman" id="jenis_pengiriman">
+              <option>Pilih</option>
+              <option>Si Cepat</option>
+              <option>JNE</option>
+              <option>JNT</option>
+              <option>Anter Aja</option>
+            </select>
+            <div class="mb-3">
+          <label for="nama" class="form-label">Catatan pengiriman</label>
+          <input type="text" class="form-control" name="catatan_pengiriman" id="catatan_pengiriman" placeholder="Catatan pengiriman">
+      </div>
+      </div>
+          <div class="text-center">
+            <hr> <button type="submit" name="submit" class="btn btn-success">Simpan</button>
+          </div>
+
+      </form>
+
+  </div>
+  <div class="card-footer bg-secondary text-light">
+  </div>
 </div>
-</body>
-</html>
+  </div>
+  
+
+</div>
+
+
+
+
+</div>

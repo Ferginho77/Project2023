@@ -2,6 +2,7 @@
 require 'function.php';
 $id_baju =$_GET["id_baju"];
 
+
 if(hapus($id_baju) > 0) {
  echo "<script>alert ('berhasil');
     document.location.href = 'lapor.php';
@@ -11,4 +12,5 @@ if(hapus($id_baju) > 0) {
     document.location.href = 'lapor.php';
     </script>";
 }
+
 ?>

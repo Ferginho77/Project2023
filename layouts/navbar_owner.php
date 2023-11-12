@@ -5,24 +5,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
 
-    <link rel="stylesheet" href="user.css">
-    <link rel="stylesheet" href="../css/user.css">
-    <title>ADMIN</title>
+    <link rel="stylesheet" href="../user.css">
+    
+    <title>OWNER</title>
 </head>
 <nav class="navbar navbar-expand-lg bg-#292832 navbar-dark text-light">
   <div class="container-fluid ms-auto">
-    <img src="img/logo.jpg.png" width="120px" height="80px">
-   
-    <!-- <img src="/path/ke/proyek/project/images/nama_gambar.jpg" alt="Deskripsi Gambar"> -->
-
-
+    <img src="../img/logo.jpg.png" width="120px" height="80px">
      <div class="navbar-nav mr-10 text-light">
         <a class="nav-link active" href="home.php">HOME</a>
-        <a class="nav-link active" href="baju.php">BAJU</a>
         <a class="nav-link active" href="pegawai.php">PEGAWAI</a>
-        <a class="nav-link active" href="pengiriman.php">PENGIRIMAN</a>
-        <a class="nav-link active" href="penjualan.php">PENJUALAN</a>
-        <a class="nav-link active" href="transaksi.php">TRANSAKSI</a>
+        <a class="nav-link active" href="jual.php">PENJUALAN</a>
         <a class="nav-link active" href="lapor.php">LAPOR</a>
        
       </div>
