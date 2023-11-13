@@ -5,6 +5,25 @@ $kelola_pegawai = query("SELECT * FROM kelola_pegawai");
 $kelola_penjualan = query("SELECT * FROM kelola_penjualan");
 $kelola_pengiriman = query("SELECT * FROM kelola_pengiriman");
 $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
+
+//FUNGSI CARI
+if(isset($_POST["cari"])){
+  $kelola_baju = cari($_POST["keyword"]);
+  
+}
+if(isset($_POST["find"])){
+  $kelola_pegawai = find($_POST["keyword"]);
+}
+if(isset($_POST["nyari"])){
+  $kelola_penjualan = nyari($_POST["keyword"]);
+}
+if(isset($_POST["kirim"])){
+  $kelola_pengiriman = kirim($_POST["keyword"]);
+}
+if(isset($_POST["neangan"])){
+  $kelola_transaksi = neangan($_POST["keyword"]);
+}
+
         ?>
 
 
@@ -16,6 +35,10 @@ $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
     Data Baju
   </div>
   <div class="card-body">
+    <form action="" method="post">
+      <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+      <button type="submit" class="btn btn-dark text-light" name="cari">Cari</button>
+    </form>
   
     <table class="table table-striped table-hover table-bordered">
       <tr>
@@ -65,6 +88,10 @@ $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
 <div class="card-header bg-warning text-dark">
     Data Pegawai
   </div>
+  <form action="" method="post">
+      <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+      <button type="submit" class="btn btn-dark text-light" name="find">Cari</button>
+    </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>
@@ -108,6 +135,10 @@ $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
   <div class="card-header bg-success text-light">
       Data Penjualan
     </div>
+    <form action="" method="post">
+      <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+      <button type="submit" class="btn btn-dark text-light" name="nyari">Cari</button>
+    </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>
@@ -150,6 +181,10 @@ $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
   <div class="card-header bg-info text-light">
       Data Pengiriman
     </div>
+    <form action="" method="post">
+      <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+      <button type="submit" class="btn btn-dark text-light" name="kirim">Cari</button>
+    </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>
@@ -198,6 +233,10 @@ $kelola_transaksi = query("SELECT * FROM kelola_transaksi");
   <div class="card-header bg-danger text-light">
       Data Transaksi
     </div>
+    <form action="" method="post">
+      <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+      <button type="submit" class="btn btn-dark text-light  " name="neangan">Cari</button>
+    </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>

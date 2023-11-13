@@ -89,6 +89,11 @@ function hapus($id_baju) {
     return mysqli_affected_rows($koneksi);
 }
 
+function cari ($keyword) {
+    $query = "SELECT * FROM kelola_baju WHERE nama_baju LIKE '%$keyword%'";
+    return query($query);
+}
+
 //MEMBUAT FUNGSI TAMBAH PEGAWAI
 
 function pegawai($data) {
@@ -128,6 +133,11 @@ $query = "UPDATE kelola_pegawai SET
 
 mysqli_query($koneksi, $query);
 return mysqli_affected_rows($koneksi);
+}
+
+function find($keyword) {
+    $query = "SELECT * FROM kelola_pegawai WHERE nama LIKE '%$keyword%'";
+    return query($query);
 }
 
 
@@ -171,7 +181,10 @@ function del($id_penjualan) {
     return mysqli_affected_rows($koneksi);
     }
 
-
+    function nyari($keyword) {
+        $query = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";
+        return query($query);
+    }
 
 //FUNGSI PENGIRIMAN
 function pengiriman($data) {
@@ -194,6 +207,10 @@ function apus($id_pengiriman) {
     return mysqli_affected_rows($koneksi);
 }
 
+function kirim($keyword) {
+    $query = "SELECT * FROM kelola_pengiriman WHERE no_resi LIKE '%$keyword%'";
+    return query($query);
+}
 
 //FUNGSI TRANSAKSI
 function transaksi($data) {
@@ -214,4 +231,10 @@ function yamsah($id_transaksi) {
     mysqli_query($koneksi, "DELETE FROM  kelola_transaksi WHERE id_transaksi = $id_transaksi");
     return mysqli_affected_rows($koneksi);
 }
+
+function neangan($keyword) {
+    $query = "SELECT * FROM kelola_transaksi WHERE jenis_barang LIKE '%$keyword%'";
+    return query($query);
+}
+
 ?>
