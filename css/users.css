@@ -1,0 +1,33 @@
+:root {
+  --bg: #15141a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: var(--bg);
+}
+
+/* CSS HOME */
+.btn {
+  margin-top: 3rem;
+  color: #f7f7f7;
+  background-color: #d76221;
+}
+.btn:hover {
+  background-color: #15141a;
+  color: #d76221;
+  border-color: #d76221;
+}
+
+input[type="radio"] {
+  display: none;
+  color: #d76221;
+  border: 2px solid #d76221;
+  border-radius: 5px;
+  padding: 10px 50px;
+}

@@ -2,6 +2,12 @@
 $kelola_penjualan = query("SELECT * FROM kelola_penjualan");
 $kelola_pegawai = query("SELECT * FROM kelola_pegawai");
 
+if(isset($_POST["nyari"])){
+  $kelola_penjualan = nyari($_POST["keyword"]);
+}
+if(isset($_POST["find"])){
+  $kelola_pegawai = find($_POST["keyword"]);
+}
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +19,7 @@ $kelola_pegawai = query("SELECT * FROM kelola_pegawai");
 
     
   <link rel="stylesheet" href="../css/user.css">
-    <title>ADMIN</title>
+    <title>OWNER</title>
 </head>
 
 <nav class="navbar navbar-expand-lg bg-#292832 navbar-dark text-light">
@@ -33,6 +39,10 @@ $kelola_pegawai = query("SELECT * FROM kelola_pegawai");
   <div class="card-header bg-success text-light">
       Data Penjualan
     </div>
+    <form action="" method="post">
+            <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+            <button type="submit" class="btn btn-dark text-light" name="nyari">Cari</button>
+          </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>
@@ -76,6 +86,10 @@ $kelola_pegawai = query("SELECT * FROM kelola_pegawai");
 <div class="card-header bg-warning text-dark">
     Data Pegawai
   </div>
+  <form action="" method="post">
+                <input type="text" name="keyword" size="30" placeholder="Cari Disini">
+                <button type="submit" class="btn btn-dark text-light" name="find">Cari</button>
+              </form>
 <div class="card-body">
 <table class="table table-striped table-hover table-bordered">
       <tr>

@@ -12,7 +12,7 @@ $id_pegawai = $_GET["id_pegawai"];
          
         }
         else{
-              echo "Gagal";  
+              echo "gagal'";  
         }
     
       }

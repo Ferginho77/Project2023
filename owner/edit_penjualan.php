@@ -1,18 +1,20 @@
 <?php 
-require'function.php';
+require 'function.php';
 $id_penjualan = $_GET["id_penjualan"];
   if(isset($_GET["id_penjualan"])){
       $id_penjualan = $_GET["id_penjualan"];
-      $penjualan = query("SELECT * FROM kelola_penjualan WHERE id_penjualan = $id_penjualan")[0];
+      $penjualan = pegawaian("SELECT * FROM kelola_penjualan WHERE id_penjualan = $id_penjualan")[0];
       if(isset($_POST["submit"])) {
-        if(edite($_POST) > 0) {
+        if(ubah($_POST) > 0) {
             echo "<script>alert ('berhasil');
             document.location.href = 'lapor.php';
             </script>";
          
         }
         else{
-              echo "Gagal";  
+              echo "<script>alert ('berhasil');
+              document.location.href = 'lapor.php';
+              </script>";  
         }
     
       }
@@ -22,8 +24,7 @@ $id_penjualan = $_GET["id_penjualan"];
 
 ?>
 
-
-<?php require'layouts/navbar.php';?>
+<?php require'../layouts/navbar_owner.php'?>
 <div class="container">
   <h3 class="text-center text-light mt-3">Kelola Penjualan</h3>
 <div class="row">
@@ -38,19 +39,19 @@ $id_penjualan = $_GET["id_penjualan"];
       <input type="hidden" name="id_penjualan" value="<?= $penjualan["id_penjualan"];?>">
       <div class="mb-3">
           <label for="" class="form-label">Tanggal Penjualan</label>
-          <input value="<?= $penjualan["tanggal_penjualan"]; ?>" type="date" class="form-control" name="tanggal_penjualan" id="tanggal_penjualan" placeholder="Tanggal Penjualan" <?= $penjualan["tanggal_penjualan"]; ?>>
+          <input value="<?= $penjualan["tanggal_penjualan"];?>" type="date" class="form-control" name="tanggal_penjualan" id="tanggal_penjualan" placeholder="Tanggal Penjualan" <?= $penjualan["tanggal_penjualan"];?>>
       </div>
       <div class="mb-3">
           <label for="" class="form-label">Jumlah</label>
-          <input value="<?= $penjualan["jumlah"]; ?>" type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" <?= $penjualan["jumlah"]; ?>>
+          <input value="<?= $penjualan["jumlah"];?>" type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" <?= $penjualan["jumlah"];?>>
       </div>
       <div class="mb-3">
           <label for="" class="form-label">Harga</label>
-          <input value="<?= $penjualan["harga"]; ?>" type="text" class="form-control" name="harga" id="harga" placeholder="Harga" <?= $penjualan["harga"]; ?>>
+          <input value="<?= $penjualan["harga"];?>" type="text" class="form-control" name="harga" id="harga" placeholder="Harga" <?= $penjualan["harga"];?>>
       </div>
       <div class="mb-3">
           <label for="nama" class="form-label">Jenis Baju</label>
-          <select <?= $penjualan["jenis_baju"]; ?> class="form-select" name="jenis_baju" id="jenis_baju" <?= $penjualan["jenis_baju"]; ?>>
+          <select class="form-select" name="jenis_baju" id="jenis_baju" <?= $penjualan["jenis_baju"];?>>
             <option>Pilih Jenis</option>
               <option>T Shirt</option>
               <option>Hoodie</option>

@@ -55,13 +55,13 @@ if(isset($_POST["submit"])) {
         <div class="row">
             <div class="col">
             <div class="mb-3">
-              <label for="nama" class="form-label">harga_jual</label>
-              <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Tambah Stok" >
+              <label for="nama" class="form-label">Harga Jual</label>
+              <input type="text" class="form-control" name="harga_jual" id="harga_jual" placeholder="Harga Jual" >
             </div>
           </div>
             <div class="col">
             <div class="mb-3">
-          <label for="nama" class="form-label">tanggal_pemasukan</label>
+          <label for="nama" class="form-label">tanggal pemasukan</label>
           <input value type="date" class="form-control" name="tanggal_pemasukan" id="tanggal_pemasukan" placeholder="Harga Jual">
             </div>
           </div>

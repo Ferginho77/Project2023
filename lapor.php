@@ -20,8 +20,8 @@ if(isset($_POST["nyari"])){
 if(isset($_POST["kirim"])){
   $kelola_pengiriman = kirim($_POST["keyword"]);
 }
-if(isset($_POST["neangan"])){
-  $kelola_transaksi = neangan($_POST["keyword"]);
+if(isset($_POST["look"])){
+  $kelola_transaksi = look($_POST["keyword"]);
 }
 
         ?>
@@ -251,7 +251,7 @@ if(isset($_POST["neangan"])){
                     <td><?= $tampil["jenis_pengiriman"]; ?></td>
                     <td><?= $tampil["catatan_pengiriman"]; ?></td>
                     <td>
-                      <a href="edit.php?id_pengiriman=<?= $tampil["id_pengiriman"]?>" class="btn btn-primary">Edit</a>
+                      <a href="edit_pengiriman.php?id_pengiriman=<?= $tampil["id_pengiriman"]?>" class="btn btn-primary">Edit</a>
                       <a href="hapus_pengiriman.php?id_pengiriman=<?= $tampil["id_pengiriman"]?>" onclick="return confirm('yakin');" class="btn btn-danger">Hapus</a>
                   </td>
                   </tr>
@@ -299,9 +299,9 @@ if(isset($_POST["neangan"])){
                     <td><?= $tampil["jenis_barang"]; ?></td>
                     <td><?= $tampil["jumlah"]; ?></td>
                     <td><?= $tampil["harga"]; ?></td>
-                    <td><?= $tampil["catatan_transaksi"]; ?></td>
+                    <td><?= $tampil["jenis_transaksi"]; ?></td>
                     <td>
-                      <a href="edit.php?id_transaksi=<?= $tampil["id_transaksi"]?>" class="btn btn-primary">Edit</a>
+                      <a href="edit_transaksi.php?id_transaksi=<?= $tampil["id_transaksi"]?>" class="btn btn-primary">Edit</a>
                       <a href="hapus_transaksi.php?id_transaksi=<?= $tampil["id_transaksi"]?>" onclick="return confirm('yakin');" class="btn btn-danger">Hapus</a>
                   </td>
                   </tr>

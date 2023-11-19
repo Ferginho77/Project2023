@@ -94,8 +94,17 @@ function cari ($keyword) {
     return query($query);
 }
 
+//FUNGSI PEGAWAI
+function pegawaian($pegawaian) {
+    global $koneksi;
+    $result= mysqli_query($koneksi, $pegawaian);
+    $row = [];
+    while($tampil = mysqli_fetch_assoc($result)) {
+     $row[] = $tampil;
+    }
+    return $row;
+}
 //MEMBUAT FUNGSI TAMBAH PEGAWAI
-
 function pegawai($data) {
     global $koneksi;
     $nama = $data["nama"];
@@ -123,7 +132,7 @@ function edit($data) {
     $alamat = $data["alamat"];
     $jenis_kelamin = $data["jenis_kelamin"];
 
-$query = "UPDATE kelola_pegawai SET
+$pegawaian = "UPDATE kelola_pegawai SET
                 id_pegawai = '$id_pegawai',
                 nama = '$nama',
                 email = '$email',
@@ -131,7 +140,7 @@ $query = "UPDATE kelola_pegawai SET
                 jenis_kelamin = '$jenis_kelamin'
                 WHERE id_pegawai = $id_pegawai";
 
-mysqli_query($koneksi, $query);
+mysqli_query($koneksi, $pegawaian);
 return mysqli_affected_rows($koneksi);
 }
 
@@ -143,6 +152,16 @@ function find($keyword) {
 
 
 //FUNGSI PENJUALAN
+function jual($jual) {
+    global $koneksi;
+    $result= mysqli_query($koneksi, $jual);
+    $row = [];
+    while($tampil = mysqli_fetch_assoc($result)) {
+     $row[] = $tampil;
+    }
+    return $row;
+}
+
 function penjualan($data) {
     global $koneksi;
     $tanggal_penjualan = $data["tanggal_penjualan"];
@@ -168,8 +187,7 @@ function del($id_penjualan) {
         $harga = $data["harga"];
         $jenis_baju = $data["jenis_baju"];
         
-    
-    $query = "UPDATE kelola_penjualan SET
+    $jual = "UPDATE kelola_penjualan SET
                     id_penjualan = '$id_penjualan',
                     tanggal_penjualan = '$tanggal_penjualan',
                     jumlah = '$jumlah',
@@ -177,7 +195,7 @@ function del($id_penjualan) {
                     jenis_baju = '$jenis_baju'
                     WHERE id_penjualan = $id_penjualan";
     
-    mysqli_query($koneksi, $query);
+    mysqli_query($koneksi, $jual);
     return mysqli_affected_rows($koneksi);
     }
 
@@ -186,7 +204,21 @@ function del($id_penjualan) {
         return query($query);
     }
 
+
+
 //FUNGSI PENGIRIMAN
+
+
+function kiriman($kiriman) {
+    global $koneksi;
+    $result= mysqli_query($koneksi, $kiriman);
+    $row = [];
+    while($tampil = mysqli_fetch_assoc($result)) {
+     $row[] = $tampil;
+    }
+    return $row;
+}
+
 function pengiriman($data) {
     global $koneksi;
     $no_resi = $data["no_resi"];
@@ -196,7 +228,6 @@ function pengiriman($data) {
     $kode_pos = $data["kode_pos"];
     $jenis_pengiriman = $data["jenis_pengiriman"];
     $catatan_pengiriman = $data["catatan_pengiriman"];
-
  mysqli_query($koneksi,"INSERT INTO kelola_pengiriman VALUES ('','$no_resi','$nama_penerima','$alamat_penerima','$telepon_penerima','$kode_pos','$jenis_pengiriman','$catatan_pengiriman')");
  return mysqli_affected_rows($koneksi);
 }
@@ -207,22 +238,62 @@ function apus($id_pengiriman) {
     return mysqli_affected_rows($koneksi);
 }
 
+function ngubah($data) {
+    global $koneksi;
+    $id_pengiriman = $data["id_pengiriman"];
+    $no_resi = $data["no_resi"];
+    $nama_penerima = $data["nama_penerima"];
+    $alamat_penerima = $data["alamat_penerima"];
+    $telepon_penerima = $data["telepon_penerima"];
+    $kode_pos = $data["kode_pos"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
+    $catatan_pengiriman = $data["catatan_pengiriman"];
+
+$kiriman = "UPDATE kelola_pengiriman SET
+                id_pengiriman = '$id_pengiriman',
+                no_resi = '$no_resi',
+                nama_penerima = '$nama_penerima',
+                alamat_penerima = '$alamat_penerima',
+                telepon_penerima = '$telepon_penerima',
+                kode_pos = '$kode_pos',
+                jenis_pengiriman = '$jenis_pengiriman',
+                catatan_pengiriman = '$catatan_pengiriman'
+                WHERE id_pengiriman = $id_pengiriman";
+
+mysqli_query($koneksi, $kiriman);
+return mysqli_affected_rows($koneksi);
+}
+
+
 function kirim($keyword) {
     $query = "SELECT * FROM kelola_pengiriman WHERE no_resi LIKE '%$keyword%'";
     return query($query);
 }
 
+
+
 //FUNGSI TRANSAKSI
+
+function cash($cash) {
+    global $koneksi;
+    $result= mysqli_query($koneksi, $cash);
+    $row = [];
+    while($tampil = mysqli_fetch_assoc($result)) {
+     $row[] = $tampil;
+    }
+    return $row;
+}
+
 function transaksi($data) {
     global $koneksi;
     $tanggal_transaksi = $data["tanggal_transaksi"];
     $jenis_barang = $data["jenis_barang"];
     $jumlah = $data["jumlah"];
     $harga = $data["harga"];
-    $catatan_transaksi = $data["catatan_transaksi"];
+    $jenis_transaksi = $data["jenis_transaksi"];
    
 
- mysqli_query($koneksi,"INSERT INTO kelola_transaksi VALUES ('','$tanggal_transaksi','$jenis_barang','$jumlah','$harga','$catatan_transaksi')");
+ mysqli_query($koneksi,"INSERT INTO kelola_transaksi VALUES ('','$tanggal_transaksi','$jenis_barang','$jumlah','$harga','$jenis_transaksi')");
  return mysqli_affected_rows($koneksi);
 }
 
@@ -232,7 +303,29 @@ function yamsah($id_transaksi) {
     return mysqli_affected_rows($koneksi);
 }
 
-function neangan($keyword) {
+function change($data) {
+    global $koneksi;
+    $id_transaksi = $data["id_transaksi"];
+    $tanggal_transaksi = $data["tanggal_transaksi"];
+    $jenis_barang = $data["jenis_barang"];
+    $jumlah = $data["jumlah"];
+    $harga = $data["harga"];
+    $jenis_transaksi = $data["jenis_transaksi"];
+    
+$cash = "UPDATE kelola_transaksi SET
+                id_transaksi = '$id_transaksi',
+                tanggal_transaksi = '$tanggal_transaksi',
+                jenis_barang = '$jenis_barang',
+                jumlah = '$jumlah',
+                harga = '$harga',
+                jenis_transaksi = '$jenis_transaksi'
+                WHERE id_transaksi = $id_transaksi";
+
+mysqli_query($koneksi, $cash);
+return mysqli_affected_rows($koneksi);
+}
+
+function look($keyword) {
     $query = "SELECT * FROM kelola_transaksi WHERE jenis_barang LIKE '%$keyword%'";
     return query($query);
 }

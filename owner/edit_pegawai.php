@@ -3,7 +3,7 @@ require 'function.php';
 $id_pegawai = $_GET["id_pegawai"];
   if(isset($_GET["id_pegawai"])){
       $id_pegawai = $_GET["id_pegawai"];
-      $penjualan = query("SELECT * FROM kelola_pegawai WHERE id_pegawai = $id_pegawai")[0];
+      $penjualan = pegawaian("SELECT * FROM kelola_pegawai WHERE id_pegawai = $id_pegawai")[0];
       if(isset($_POST["submit"])) {
         if(edit($_POST) > 0) {
             echo "<script>alert ('berhasil');
@@ -12,7 +12,9 @@ $id_pegawai = $_GET["id_pegawai"];
          
         }
         else{
-              echo "Gagal";  
+              echo "<script>alert ('berhasil');
+              document.location.href = 'lapor.php';
+              </script>";  
         }
     
       }

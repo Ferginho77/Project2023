@@ -32,6 +32,42 @@ function del($id_penjualan) {
     return mysqli_affected_rows($koneksi);
 }
 
+function ubah($data) {
+    global $koneksi;
+    $id_penjualan = $data["id_penjualan"];
+    $tanggal_penjualan = $data["tanggal_penjualan"];
+    $jumlah = $data["jumlah"];
+    $harga = $data["harga"];
+    $jenis_baju = $data["jenis_baju"];
+
+$query = "UPDATE kelola_penjualan SET
+                id_penjualan = '$id_penjualan',
+                tanggal_penjualan = '$tanggal_penjualan',
+                jumlah = '$jumlah',
+                harga = '$harga',
+                jenis_baju = '$jenis_baju'
+                WHERE id_penjualan = $id_penjualan";
+
+mysqli_query($koneksi, $query);
+return mysqli_affected_rows($koneksi);
+}
+
+function nyari($keyword) {
+    $query = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";
+    return query($query);
+}
+
+
+//PEGAWAI
+function pegawaian($pegawaian) {
+    global $koneksi;
+    $result= mysqli_query($koneksi, $pegawaian);
+    $row = [];
+    while($tampil = mysqli_fetch_assoc($result)) {
+     $row[] = $tampil;
+    }
+    return $row;
+}
 
 function pegawai($data) {
     global $koneksi;
@@ -59,7 +95,7 @@ function edit($data) {
     $alamat = $data["alamat"];
     $jenis_kelamin = $data["jenis_kelamin"];
 
-$query = "UPDATE kelola_pegawai SET
+$pegawaian = "UPDATE kelola_pegawai SET
                 id_pegawai = '$id_pegawai',
                 nama = '$nama',
                 email = '$email',
@@ -67,8 +103,12 @@ $query = "UPDATE kelola_pegawai SET
                 jenis_kelamin = '$jenis_kelamin'
                 WHERE id_pegawai = $id_pegawai";
 
-mysqli_query($koneksi, $query);
+mysqli_query($koneksi, $pegawaian);
 return mysqli_affected_rows($koneksi);
+}
+function find($keyword) {
+    $query = "SELECT * FROM kelola_pegawai WHERE nama LIKE '%$keyword%'";
+    return query($query);
 }
 
 ?>
