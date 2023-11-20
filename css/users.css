@@ -23,11 +23,3 @@ body {
   color: #d76221;
   border-color: #d76221;
 }
-
-input[type="radio"] {
-  display: none;
-  color: #d76221;
-  border: 2px solid #d76221;
-  border-radius: 5px;
-  padding: 10px 50px;
-}

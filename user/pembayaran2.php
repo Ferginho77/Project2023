@@ -1,7 +1,4 @@
-<?php 
-require'function.php';
-$pembelian = baju2("SELECT * FROM pembelian");
-?>
+
 
 <?php require '../layouts/navbar_user.php'; ?>
 <div class="position-relative mt-5 text-light">
@@ -11,11 +8,20 @@ $pembelian = baju2("SELECT * FROM pembelian");
             <div class="card-body">
                 <p class="fw-bolder">Info Pengiriman : </p>
                 <p>Produk : Japan Cat</p>
-                <?php foreach($pembelian as $tampil) : ?>
-                    <p>Pembayaran :<?= $tampil["jenis_transaksi"];?> </p>
-                <p>Ekspedisi :<?= $tampil ["jenis_pengiriman"];?> </p>
-                <?php endforeach; ?>
-                
+                <?php
+    session_start();
+
+    // Munculkan data yang disimpan dalam sesi
+    if (isset($_SESSION['jenis_transaksi']) && 
+        isset($_SESSION['jenis_pengiriman']) 
+        ) {
+        echo "<p>Transaksi: " . $_SESSION['jenis_transaksi'] . "</p>";
+        echo "<p>Ekspedisi: " . $_SESSION['jenis_pengiriman'] . "</p>";
+    } else {
+        echo "<p>Data tidak tersedia.</p>";
+    }
+    ?>
+                <p>Sub Total : Rp.75.000</p>
                 <a href="selesai.php" class="btn">Selesai Checkout</a>
                 <a href="all_tshirt.php" class="btn">Pesan Lagi</a>
             </div>

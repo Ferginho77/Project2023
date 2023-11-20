@@ -1,18 +1,34 @@
-<?php 
+<?php
 require'function.php';
-if(isset($_POST["submit"])) {
-    if(baju($_POST) > 0) {
-      echo "<script>alert ('berhasil');
-      document.location.href = 'pembayaran3.php';
-      </script>";
-    } else {
-      echo "gagal";
+session_start();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Simpan pilihan transaksi dan ekspedisi dalam sesi
+    $_SESSION['jenis_transaksi'] = $_POST['jenis_transaksi'];
+    $_SESSION['jenis_pengiriman'] = $_POST['jenis_pengiriman'];
+  
+
+    $jenis_transaksi = $_POST['jenis_transaksi'];
+    $kelola_transaksi = "INSERT INTO kelola_transaksi (jenis_transaksi) VALUES ('$jenis_transaksi')";
+
+    if ($koneksi->query($kelola_transaksi) !== TRUE) {
+        echo "Error: " . $kelola_transaksi . "<br>" . $koneksi->error;
     }
 
-  }
+    $jenis_pengiriman = $_POST['jenis_pengiriman'];
+    $kelola_pengiriman = "INSERT INTO kelola_pengiriman (jenis_pengiriman) VALUES ('$jenis_pengiriman')";
+
+    if ($koneksi->query($kelola_pengiriman) !== TRUE) {
+        echo "Error: " . $kelola_pengiriman . "<br>" . $koneksi->error;
+    }
+
+
+    // Redirect ke halaman selanjutnya
+    header("Location: pembayaran3.php");
+    exit();
+}
 
 ?>
-
 
 <?php require '../layouts/navbar_user.php'; ?>
 <div class="position-relative mt-5 text-light">
