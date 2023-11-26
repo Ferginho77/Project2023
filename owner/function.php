@@ -17,13 +17,15 @@ function query($query) {
 
 function penjualan($data) {
     global $koneksi;
-    $tanggal_penjualan = $data["tanggal_penjualan"];
+    $jenis_baju = $data["jenis_baju"];
+    $jenis_transaksi = $data["jenis_transaksi"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
     $jumlah = $data["jumlah"];
     $harga = $data["harga"];
-    $jenis_baju = $data["jenis_baju"];
+  
 
- mysqli_query($koneksi,"INSERT INTO kelola_penjualan VALUES ('','$tanggal_penjualan','$jumlah','$harga','$jenis_baju')");
- return mysqli_affected_rows($koneksi);
+    mysqli_query($koneksi, "INSERT INTO kelola_penjualan VALUES ('', '$jenis_baju','$jenis_pengiriman','$jenis_transaksi','$jumlah','$harga')");
+    return mysqli_affected_rows($koneksi);
 }
 
 function del($id_penjualan) {
@@ -35,17 +37,20 @@ function del($id_penjualan) {
 function ubah($data) {
     global $koneksi;
     $id_penjualan = $data["id_penjualan"];
-    $tanggal_penjualan = $data["tanggal_penjualan"];
+    $jenis_baju = $data["jenis_baju"];
+    $jenis_transaksi = $data["jenis_transaksi"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
     $jumlah = $data["jumlah"];
     $harga = $data["harga"];
-    $jenis_baju = $data["jenis_baju"];
+  
 
 $query = "UPDATE kelola_penjualan SET
                 id_penjualan = '$id_penjualan',
-                tanggal_penjualan = '$tanggal_penjualan',
-                jumlah = '$jumlah',
-                harga = '$harga',
-                jenis_baju = '$jenis_baju'
+                jenis_baju = '$jenis_baju',
+                jenis_transaksi = '$jenis_transaksi',
+                jenis_pengiriman = '$jenis_pengiriman',
+                jumlah = '$jumlah'
+                harga = '$harga'
                 WHERE id_penjualan = $id_penjualan";
 
 mysqli_query($koneksi, $query);

@@ -26,8 +26,28 @@ if(isset($_POST["submit"])) {
   <div class="card-body">
       <form action="" method="post">
       <div class="mb-3">
-          <label for="" class="form-label">Tanggal Penjualan</label>
-          <input type="date" class="form-control" name="tanggal_penjualan" id="tanggal_penjualan" placeholder="Tanggal Penjualan">
+        <label for="" class="form-label">Jenis Baju</label>
+        <input type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="jenis baju">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ukuran</label>
+        <select class="form-select" name="ukuran" id="ukuran">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Jenis transaksi</label>
+        <input type="text" class="form-control" name="jenis_transaksi" id="jenis_transaksi" placeholder="jenis transaksi">
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Jenis pengiriman</label>
+       <select class="form-select" name="jenis_pengiriman" id="jenis_pengiriman">
+        <option>COD</option>
+        <option>Transfer</option>
+       </select>
       </div>
       <div class="mb-3">
           <label for="" class="form-label">Jumlah</label>
@@ -37,14 +57,7 @@ if(isset($_POST["submit"])) {
           <label for="" class="form-label">Harga</label>
           <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga">
       </div>
-      <div class="mb-3">
-          <label for="nama" class="form-label">Jenis Baju</label>
-          <select class="form-select" name="jenis_baju" id="jenis_baju">
-            <option>Pilih Jenis</option>
-              <option>T Shirt</option>
-              <option>Hoodie</option>
-            </select>
-      </div>
+  
           <div class="text-center">
             <hr> <button type="submit" name="submit" class="btn btn-success">Simpan</button>
           </div>

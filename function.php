@@ -164,14 +164,18 @@ function jual($jual) {
 
 function penjualan($data) {
     global $koneksi;
-    $tanggal_penjualan = $data["tanggal_penjualan"];
+    $jenis_baju = $data["jenis_baju"];
+    $ukuran = $data["ukuran"];
+    $jenis_transaksi = $data["jenis_transaksi"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
     $jumlah = $data["jumlah"];
     $harga = $data["harga"];
-    $jenis_baju = $data["jenis_baju"];
+  
 
- mysqli_query($koneksi,"INSERT INTO kelola_penjualan VALUES ('','$tanggal_penjualan','$jumlah','$harga','$jenis_baju')");
- return mysqli_affected_rows($koneksi);
+    mysqli_query($koneksi, "INSERT INTO kelola_penjualan VALUES ('', '$jenis_baju','$ukuran','$jenis_pengiriman','$jenis_transaksi','$jumlah','$harga')");
+    return mysqli_affected_rows($koneksi);
 }
+
 
 function del($id_penjualan) {
     global $koneksi;
@@ -179,25 +183,30 @@ function del($id_penjualan) {
     return mysqli_affected_rows($koneksi);
 }
 
-    function edite($data) {
-        global $koneksi;
-        $id_penjualan = $data["id_penjualan"];
-        $tanggal_penjualan = $data["tanggal_penjualan"];
-        $jumlah = $data["jumlah"];
-        $harga = $data["harga"];
-        $jenis_baju = $data["jenis_baju"];
-        
-    $jual = "UPDATE kelola_penjualan SET
-                    id_penjualan = '$id_penjualan',
-                    tanggal_penjualan = '$tanggal_penjualan',
-                    jumlah = '$jumlah',
-                    harga = '$harga',
-                    jenis_baju = '$jenis_baju'
-                    WHERE id_penjualan = $id_penjualan";
-    
-    mysqli_query($koneksi, $jual);
-    return mysqli_affected_rows($koneksi);
-    }
+function edite($data) {
+    global $koneksi;
+    $id_penjualan = $data["id_penjualan"];
+    $jenis_baju = $data["jenis_baju"];
+    $ukuran = $data["ukuran"];
+    $jenis_transaksi = $data["jenis_transaksi"];
+    $jenis_pengiriman = $data["jenis_pengiriman"];
+    $jumlah = $data["jumlah"];
+    $harga = $data["harga"];
+  
+
+$query = "UPDATE kelola_penjualan SET
+                id_penjualan = '$id_penjualan',
+                jenis_baju = '$jenis_baju',
+                ukuran = '$ukuran',
+                jenis_transaksi = '$jenis_transaksi',
+                jenis_pengiriman = '$jenis_pengiriman',
+                jumlah = '$jumlah'
+                harga = '$harga'
+                WHERE id_penjualan = $id_penjualan";
+
+mysqli_query($koneksi, $query);
+return mysqli_affected_rows($koneksi);
+}
 
     function nyari($keyword) {
         $query = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";

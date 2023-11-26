@@ -6,6 +6,7 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+  
 }
 
 body {
@@ -22,4 +23,15 @@ body {
   background-color: #15141a;
   color: #d76221;
   border-color: #d76221;
+}
+#quantity-display {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#increment-btn,
+#decrement-btn {
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
 }

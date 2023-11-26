@@ -1,34 +1,15 @@
-<?php
-require'function.php';
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Simpan pilihan transaksi dan ekspedisi dalam sesi
-    $_SESSION['jenis_transaksi'] = $_POST['jenis_transaksi'];
-    $_SESSION['jenis_pengiriman'] = $_POST['jenis_pengiriman'];
-  
-
-    $jenis_transaksi = $_POST['jenis_transaksi'];
-    $kelola_transaksi = "INSERT INTO kelola_transaksi (jenis_transaksi) VALUES ('$jenis_transaksi')";
-
-    if ($koneksi->query($kelola_transaksi) !== TRUE) {
-        echo "Error: " . $kelola_transaksi . "<br>" . $koneksi->error;
+<?php require'function.php';
+if(isset($_POST["submit"])) {
+    if(beli($_POST) > 0) {
+        header("location:pembayaran2.php");
+    } else {
+      echo "gagal";
     }
 
-    $jenis_pengiriman = $_POST['jenis_pengiriman'];
-    $kelola_pengiriman = "INSERT INTO kelola_pengiriman (jenis_pengiriman) VALUES ('$jenis_pengiriman')";
-
-    if ($koneksi->query($kelola_pengiriman) !== TRUE) {
-        echo "Error: " . $kelola_pengiriman . "<br>" . $koneksi->error;
-    }
-
-
-    // Redirect ke halaman selanjutnya
-    header("Location: pembayaran2.php");
-    exit();
-}
+  }
 
 ?>
+
 
 <?php require '../layouts/navbar_user.php'; ?>
 <div class="position-relative mt-5 text-light">
@@ -48,9 +29,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card  bg-dark text-light border border-light" style="width: 18rem;">
                 <div class="card-body">
                     <h6>Atur Jumlah</h6>
-                    <p>Japan Cat</p>
-                    <form action="" method="post">
-                        <select class="form-select" name="jenis_transaksi" id="jenis_transaksi">
+                    
+                     <form action="" method="post">
+                     <input type="hidden" name="jenis_baju" id="jenis_baju" value="Japan Cat">
+                     <label for="jenis_baju">Japan Cat</label>
+                     <select class="form-select" name="ukuran" id="ukuran">
+                            <option>Pilih Ukuran</option>
+                            <option>S</option>
+                            <option>M</option>
+                            <option>L</option>
+                            <option>XL</option>
+                          
+                        </select>
+                        <select class="form-select mt-3" name="jenis_transaksi" id="jenis_transaksi">
                             <option>Pilih Pembayaran</option>
                             <option>COD</option>
                             <option>Transfer</option>
@@ -61,11 +52,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <option>JNT</option>
                             <option>Si Cepat</option>
                         </select>
-                   
-                        <p class="fw-bold">Subtotal : Rp.55.000</p>
+                        <!-- Menentukan Jumlah -->
+                        <label for="jumlah">Jumlah:</label>
+        <input class="mt-3" type="number" name="jumlah" id="jumlah" required><br>
+
+        <label for="harga">Harga:</label>
+        <!-- Harga awal diatur menjadi 55,000 -->
+        <input class="mt-3" type="number" name="awal" id="awal" value="55000" readonly><br>
+
+        <button class="btn" type="button" onclick="hitungTotal()">Hitung Total</button>
+
+        <input class="mt-3" type="text" name="harga" id="harga" placeholder="Harga total" readonly>
+
                     <button type="submit" name="submit" class="btn">Beli</button>
-                </form>
+                    </form>
                 </div>
             </div>
     
 </div>
+<!-- SISTEM QUANTITY -->
+<script>
+        function hitungTotal() {
+            // Ambil nilai dari input jumlah dan harga
+            var jumlah = document.getElementById('jumlah').value;
+            var awal = document.getElementById('awal').value;
+
+            // Hitung total
+            var harga = jumlah * awal;
+
+            // Setel nilai total ke dalam input total
+            document.getElementById('harga').value = harga;
+        }
+    </script>

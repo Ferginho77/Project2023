@@ -1,3 +1,6 @@
+<?php require'function.php';
+$kelola_penjualan = query("SELECT * FROM kelola_penjualan ORDER BY id_penjualan DESC LIMIT 1");
+?>
 
 <?php require '../layouts/navbar_user.php'; ?>
 <div class="position-relative mt-5 text-light">
@@ -5,22 +8,17 @@
     <div class="position-absolute top-50 start-50 translate-middle">
         <div class="card">
             <div class="card-body">
-                <p class="fw-bolder">Info Pengiriman : </p>
-                <p>Produk : Baby Astronaut</p>
-                <?php
-    session_start();
+                <?php foreach($kelola_penjualan as $tampil) : ?>
 
-    // Munculkan data yang disimpan dalam sesi
-    if (isset($_SESSION['jenis_transaksi']) && 
-        isset($_SESSION['jenis_pengiriman']) 
-        ) {
-        echo "<p>Transaksi: " . $_SESSION['jenis_transaksi'] . "</p>";
-        echo "<p>Ekspedisi: " . $_SESSION['jenis_pengiriman'] . "</p>";
-    } else {
-        echo "<p>Data tidak tersedia.</p>";
-    }
-    ?>
-                <p>Sub Total : Rp.85.000</p>
+                
+                    <p>Produk :<?= $tampil["jenis_baju"]; ?></p>
+                    <p>Ukuran : <?= $tampil["ukuran"]; ?></p>
+                    <p>Pembayaran :<?= $tampil["jenis_transaksi"]; ?></p>
+                    <p>Ekspedisi :<?= $tampil["jenis_pengiriman"]; ?></p>
+                    <p>Jumlah :<?= $tampil["jumlah"]; ?></p>
+                    <p>Harga :Rp.<?= $tampil["harga"]; ?></p>
+
+                <?php endforeach;?>
                 <a href="selesai.php" class="btn">Selesai Checkout</a>
                 <a href="all_tshirt.php" class="btn">Pesan Lagi</a>
             </div>

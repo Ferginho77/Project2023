@@ -176,10 +176,12 @@ if(isset($_POST["look"])){
       <table class="table table-striped table-hover table-bordered">
             <tr>
               <th>No</th>
-              <th>Tanggal Pemasukan</th>
+              <th>Jenis Baju</th>
+              <th>Ukuran</th>
+              <th>Jenis Transaksi</th>
+              <th>Jenis Pengiriman</th>
               <th>Jumlah</th>
               <th>Harga</th>
-              <th>Jenis Baju</th>
               <th>Aksi</th>
           
             </tr>
@@ -192,10 +194,13 @@ if(isset($_POST["look"])){
                   <?php foreach($kelola_penjualan as $tampil) : ?>
 
                     <td><?= $i ?></td>
-                    <td><?= $tampil["tanggal_penjualan"]; ?></td>
+                    <td><?= $tampil["jenis_baju"]; ?></td>
+                    <td><?= $tampil["ukuran"]; ?></td>
+                    <td><?= $tampil["jenis_transaksi"]; ?></td>
+                    <td><?= $tampil["jenis_pengiriman"]; ?></td>
                     <td><?= $tampil["jumlah"]; ?></td>
                     <td><?= $tampil["harga"]; ?></td>
-                    <td><?= $tampil["jenis_baju"]; ?></td>
+                  
                     <td>
                       <a href="edit_penjualan.php?id_penjualan=<?= $tampil["id_penjualan"]?>" class="btn btn-primary">Edit</a>
                       <a href="hapus_penjualan.php?id_penjualan=<?= $tampil["id_penjualan"]?>" onclick="return confirm('yakin');" class="btn btn-danger">Hapus</a>
