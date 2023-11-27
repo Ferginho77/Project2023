@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Nov 2023 pada 14.17
+-- Waktu pembuatan: 27 Nov 2023 pada 15.41
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -56,10 +56,7 @@ CREATE TABLE `kelola_baju` (
 --
 
 INSERT INTO `kelola_baju` (`id_baju`, `nama_baju`, `jenis_baju`, `ukuran_baju`, `tambah_stok`, `harga_jual`, `tanggal_pemasukan`, `deskripsi`) VALUES
-(12345751, 'baju', 'tshist', 'Pilih Ukur', '5', 'Rp.5000', '2023-11-09', 'oke'),
-(12345754, 'hoodie', 'hoodie', 'Pilih Ukur', '20', 'Rp.5000', '2023-11-23', 'oke'),
-(12345755, 'japan', 'tshist', 'Pilih Ukur', '2', 'rp.44.000', '2023-11-24', 'oke'),
-(12345756, 'japan', 'T Shirt', 'Pilih Ukur', '5', 'rp.44.000', '2023-11-21', 'oke');
+(12345751, 'baju', 'tshist', 'Pilih Ukur', '5', 'Rp.5000', '2023-11-09', 'oke');
 
 -- --------------------------------------------------------
 
@@ -80,10 +77,7 @@ CREATE TABLE `kelola_pegawai` (
 --
 
 INSERT INTO `kelola_pegawai` (`id_pegawai`, `nama`, `email`, `alamat`, `jenis_kelamin`) VALUES
-(1223350, 'fergie fakhirusalam', 'fergiefakhirusalam@gmail.com', 'jl.skkk', 'Pria'),
-(1223351, 'burhanto', 'ss@gmail.com', 'jl.gbr1', 'Wanita'),
-(1223352, 'aaa', 'admin@gmail.com', 'jl.skr', 'Pria'),
-(1223353, 'pikom', 'pik@gmail.com', 'jl.skr', 'Pria');
+(1223350, 'fergie fakhirusalam', 'fergiefakhirusalam@gmail.com', 'jl.skkk', 'Pria');
 
 -- --------------------------------------------------------
 
@@ -117,19 +111,25 @@ INSERT INTO `kelola_pengiriman` (`id_pengiriman`, `no_resi`, `nama_penerima`, `a
 
 CREATE TABLE `kelola_penjualan` (
   `id_penjualan` int(11) NOT NULL,
-  `tanggal_penjualan` date NOT NULL,
+  `jenis_baju` varchar(255) NOT NULL,
+  `ukuran` varchar(11) NOT NULL,
+  `jenis_transaksi` enum('COD','Transfer','','') NOT NULL,
+  `jenis_pengiriman` varchar(50) NOT NULL,
   `jumlah` varchar(255) NOT NULL,
-  `harga` varchar(255) NOT NULL,
-  `jenis_baju` varchar(50) NOT NULL
+  `harga` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kelola_penjualan`
 --
 
-INSERT INTO `kelola_penjualan` (`id_penjualan`, `tanggal_penjualan`, `jumlah`, `harga`, `jenis_baju`) VALUES
-(54327, '2023-11-04', '12', 'Rp.50.000', 'T Shirt'),
-(54328, '2023-11-09', '3', 'Rp.50.000', 'Hoodie');
+INSERT INTO `kelola_penjualan` (`id_penjualan`, `jenis_baju`, `ukuran`, `jenis_transaksi`, `jenis_pengiriman`, `jumlah`, `harga`) VALUES
+(54358, 'Red T-Shirt', '', 'COD', 'Si Cepat', '3', 165000),
+(54360, 'Baby Astronaut', '', 'Transfer', 'JNE', '5', 275000),
+(54361, 'Red T-Shirt', '', 'COD', 'JNE', '3', 165000),
+(54362, 'Red T-Shirt', '', 'COD', 'JNE', '2', 110000),
+(54363, 'Red T-Shirt', 'S', 'COD', 'JNE', '111', 6105000),
+(54364, 'Japan Cat', 'S', 'COD', 'JNE', '4', 220000);
 
 -- --------------------------------------------------------
 
@@ -173,18 +173,6 @@ CREATE TABLE `owner` (
 
 INSERT INTO `owner` (`id`, `username`, `email`, `password`, `alamat`) VALUES
 (2134567, 'owner', 'owner@gmail.com', '123456', 'jl.sangkuriang');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `pembelian`
---
-
-CREATE TABLE `pembelian` (
-  `id_pembelian` int(11) NOT NULL,
-  `jenis_transaksi` varchar(50) NOT NULL,
-  `jenis_pengiriman` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -258,12 +246,6 @@ ALTER TABLE `owner`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `pembelian`
---
-ALTER TABLE `pembelian`
-  ADD PRIMARY KEY (`id_pembelian`);
-
---
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -283,7 +265,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `kelola_baju`
 --
 ALTER TABLE `kelola_baju`
-  MODIFY `id_baju` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12345757;
+  MODIFY `id_baju` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12345765;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelola_pegawai`
@@ -295,31 +277,25 @@ ALTER TABLE `kelola_pegawai`
 -- AUTO_INCREMENT untuk tabel `kelola_pengiriman`
 --
 ALTER TABLE `kelola_pengiriman`
-  MODIFY `id_pengiriman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111222338;
+  MODIFY `id_pengiriman` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111222362;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelola_penjualan`
 --
 ALTER TABLE `kelola_penjualan`
-  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54329;
+  MODIFY `id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54365;
 
 --
 -- AUTO_INCREMENT untuk tabel `kelola_transaksi`
 --
 ALTER TABLE `kelola_transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=654326;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=654352;
 
 --
 -- AUTO_INCREMENT untuk tabel `owner`
 --
 ALTER TABLE `owner`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2134568;
-
---
--- AUTO_INCREMENT untuk tabel `pembelian`
---
-ALTER TABLE `pembelian`
-  MODIFY `id_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
