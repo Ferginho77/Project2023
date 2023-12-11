@@ -1,6 +1,6 @@
 <?php require'function.php';
-$kelola_penjualan = query("SELECT * FROM kelola_penjualan");
-$kelola_pegawai = query("SELECT * FROM kelola_pegawai");
+$kelola_penjualan = jual("SELECT * FROM kelola_penjualan");
+$kelola_pegawai = jual("SELECT * FROM kelola_pegawai");
 
 if(isset($_POST["nyari"])){
   $kelola_penjualan = nyari($_POST["keyword"]);

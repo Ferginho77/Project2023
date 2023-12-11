@@ -200,14 +200,14 @@ $query = "UPDATE kelola_penjualan SET
                 ukuran = '$ukuran',
                 jenis_transaksi = '$jenis_transaksi',
                 jenis_pengiriman = '$jenis_pengiriman',
-                jumlah = '$jumlah'
+                jumlah = '$jumlah',
                 harga = '$harga'
                 WHERE id_penjualan = $id_penjualan";
 
 mysqli_query($koneksi, $query);
 return mysqli_affected_rows($koneksi);
 }
-
+ 
     function nyari($keyword) {
         $query = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";
         return query($query);

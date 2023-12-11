@@ -3,7 +3,7 @@ require 'function.php';
 $id_penjualan = $_GET["id_penjualan"];
   if(isset($_GET["id_penjualan"])){
       $id_penjualan = $_GET["id_penjualan"];
-      $penjualan = pegawaian("SELECT * FROM kelola_penjualan WHERE id_penjualan = $id_penjualan")[0];
+      $penjualan = jual("SELECT * FROM kelola_penjualan WHERE id_penjualan = $id_penjualan")[0];
       if(isset($_POST["submit"])) {
         if(ubah($_POST) > 0) {
             echo "<script>alert ('berhasil');
@@ -18,9 +18,9 @@ $id_penjualan = $_GET["id_penjualan"];
         }
     
       }
-    
+     
   }
-
+ 
 
 ?>
 
@@ -38,8 +38,32 @@ $id_penjualan = $_GET["id_penjualan"];
       <form action="" method="post">
       <input type="hidden" name="id_penjualan" value="<?= $penjualan["id_penjualan"];?>">
       <div class="mb-3">
-          <label for="" class="form-label">Tanggal Penjualan</label>
-          <input value="<?= $penjualan["tanggal_penjualan"];?>" type="date" class="form-control" name="tanggal_penjualan" id="tanggal_penjualan" placeholder="Tanggal Penjualan" <?= $penjualan["tanggal_penjualan"];?>>
+        <label for="" class="form-label">Jenis Baju</label>
+        <input value="<?= $penjualan["jenis_baju"];?>" type="text" class="form-control" name="jenis_baju" id="jenis_baju" placeholder="jenis baju" <?= $penjualan["jenis_baju"];?>>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Ukuran</label>
+        <select value="<?= $penjualan["ukuran"];?>" class="form-select" name="ukuran" id="ukuran" <?= $penjualan["ukuran"];?>>
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="" class="form-label">Jenis transaksi</label>
+        <select value="<?= $penjualan["jenis_transaksi"];?>" class="form-select" name="jenis_transaksi" id="jenis_transaksi" <?= $penjualan["jenis_transaksi"];?>>
+        <option>COD</option>
+        <option>Transfer</option>
+       </select>
+      <div class="mb-3">
+        <label for="" class="form-label">Jenis pengiriman</label>
+        <select value="<?= $penjualan["jenis_pengiriman"];?>" class="form-select" name="jenis_pengiriman" id="jenis_pengiriman" <?= $penjualan["jenis_pengiriman"];?>>
+        <option>JNE</option>
+        <option>JNT</option>
+        <option>Si Cepat</option>
+       </select>
+      
       </div>
       <div class="mb-3">
           <label for="" class="form-label">Jumlah</label>
@@ -49,14 +73,7 @@ $id_penjualan = $_GET["id_penjualan"];
           <label for="" class="form-label">Harga</label>
           <input value="<?= $penjualan["harga"];?>" type="text" class="form-control" name="harga" id="harga" placeholder="Harga" <?= $penjualan["harga"];?>>
       </div>
-      <div class="mb-3">
-          <label for="nama" class="form-label">Jenis Baju</label>
-          <select class="form-select" name="jenis_baju" id="jenis_baju" <?= $penjualan["jenis_baju"];?>>
-            <option>Pilih Jenis</option>
-              <option>T Shirt</option>
-              <option>Hoodie</option>
-            </select>
-      </div>
+  
           <div class="text-center">
             <hr> <button type="submit" name="submit" class="btn btn-success">Simpan</button>
           </div>
@@ -71,8 +88,4 @@ $id_penjualan = $_GET["id_penjualan"];
   
 
 </div>
-
-
-
-
 </div>

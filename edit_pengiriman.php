@@ -36,11 +36,11 @@ $id_pengiriman = $_GET["id_pengiriman"];
       <form action="" method="post">
       <input type="hidden" name="id_pengiriman" value="<?= $penjualan["id_pengiriman"];?>">
       <div class="mb-3">
-          <label for="nama" class="form-label"><i data-feather="user"></i>No Resi </label>
+          <label for="nama" class="form-label">No Resi </label>
           <input value="<?= $penjualan["no_resi"];?>" type="text" class="form-control" name="no_resi" id="no_resi" placeholder="No Resi" <?= $penjualan["no_resi"];?>>
       </div>
       <div class="mb-3">
-          <label for="nama" class="form-label"><i data-feather="user"></i>Nama Penerima </label>
+          <label for="nama" class="form-label">Nama Penerima </label>
           <input value="<?= $penjualan["nama_penerima"];?>" type="text" class="form-control" name="nama_penerima" id="nama_penerima" placeholder="Nama Penerima" <?= $penjualan["nama_penerima"];?>>
       </div>
       <div class="mb-3">

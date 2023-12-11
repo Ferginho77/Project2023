@@ -20,8 +20,6 @@ $id_pegawai = $_GET["id_pegawai"];
       }
     
   }
-
-
 ?>
 
 

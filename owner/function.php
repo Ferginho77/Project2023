@@ -5,9 +5,11 @@ if (!$koneksi) { //cek koneksi
     die("koneksi gagal");
 }
 
-function query($query) {
+
+//FUNGSI JUAL
+function jual($jual) {
     global $koneksi;
-    $result= mysqli_query($koneksi, $query);
+    $result= mysqli_query($koneksi, $jual);
     $row = [];
     while($tampil = mysqli_fetch_assoc($result)) {
      $row[] = $tampil;
@@ -15,16 +17,17 @@ function query($query) {
     return $row;
 }
 
-function penjualan($data) {
+function jualan($data) {
     global $koneksi;
     $jenis_baju = $data["jenis_baju"];
+    $ukuran = $data["ukuran"];
     $jenis_transaksi = $data["jenis_transaksi"];
     $jenis_pengiriman = $data["jenis_pengiriman"];
     $jumlah = $data["jumlah"];
     $harga = $data["harga"];
   
-
-    mysqli_query($koneksi, "INSERT INTO kelola_penjualan VALUES ('', '$jenis_baju','$jenis_pengiriman','$jenis_transaksi','$jumlah','$harga')");
+ 
+    mysqli_query($koneksi, "INSERT INTO kelola_penjualan VALUES ('', '$jenis_baju','$ukuran','$jenis_transaksi','$jenis_pengiriman','$jumlah','$harga')");
     return mysqli_affected_rows($koneksi);
 }
 
@@ -44,22 +47,22 @@ function ubah($data) {
     $harga = $data["harga"];
   
 
-$query = "UPDATE kelola_penjualan SET
+$jual = "UPDATE kelola_penjualan SET
                 id_penjualan = '$id_penjualan',
                 jenis_baju = '$jenis_baju',
                 jenis_transaksi = '$jenis_transaksi',
                 jenis_pengiriman = '$jenis_pengiriman',
-                jumlah = '$jumlah'
+                jumlah = '$jumlah',
                 harga = '$harga'
                 WHERE id_penjualan = $id_penjualan";
 
-mysqli_query($koneksi, $query);
+mysqli_query($koneksi, $jual);
 return mysqli_affected_rows($koneksi);
 }
 
 function nyari($keyword) {
-    $query = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";
-    return query($query);
+    $jual = "SELECT * FROM kelola_penjualan WHERE tanggal_penjualan LIKE '%$keyword%'";
+    return query($jual);
 }
 
 

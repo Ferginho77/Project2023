@@ -1,7 +1,7 @@
 <?php 
 require'function.php';
 if(isset($_POST["submit"])) {
-  if(penjualan($_POST) > 0) {
+  if(jualan($_POST) > 0) {
     echo "<script>alert ('berhasil');
     document.location.href = 'lapor.php';
     </script>";
@@ -40,14 +40,18 @@ if(isset($_POST["submit"])) {
       </div>
       <div class="mb-3">
         <label for="" class="form-label">Jenis transaksi</label>
-        <input type="text" class="form-control" name="jenis_transaksi" id="jenis_transaksi" placeholder="jenis transaksi">
-      </div>
-      <div class="mb-3">
-        <label for="" class="form-label">Jenis pengiriman</label>
-       <select class="form-select" name="jenis_pengiriman" id="jenis_pengiriman">
+        <select class="form-select" name="jenis_transaksi" id="jenis_transaksi">
         <option>COD</option>
         <option>Transfer</option>
        </select>
+      <div class="mb-3">
+        <label for="" class="form-label">Jenis pengiriman</label>
+        <select class="form-select" name="jenis_pengiriman" id="jenis_pengiriman">
+        <option>JNE</option>
+        <option>JNT</option>
+        <option>Si Cepat</option>
+       </select>
+      
       </div>
       <div class="mb-3">
           <label for="" class="form-label">Jumlah</label>
