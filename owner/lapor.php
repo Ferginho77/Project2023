@@ -48,6 +48,7 @@ if(isset($_POST["find"])){
       <tr>
         <th>No</th>
         <th>Jenis Baju</th>
+        <th>Ukuran</th>
         <th>Jenis Transaksi</th>
         <th>Jenis Pengiriman</th>
         <th>Jumlah</th>
@@ -65,6 +66,7 @@ if(isset($_POST["find"])){
 
               <td><?= $i ?></td>
               <td><?= $tampil["jenis_baju"]; ?></td>
+              <td><?= $tampil["ukuran"]; ?></td>
               <td><?= $tampil["jenis_transaksi"]; ?></td>
               <td><?= $tampil["jenis_pengiriman"]; ?></td>
               <td><?= $tampil["jumlah"]; ?></td>

@@ -15,6 +15,7 @@ function query($query) {
     return $row;
 }
 
+//FUNGSI PEMBELIAN BAJU
 function beli($data) {
     global $koneksi;
     $jenis_baju = $data["jenis_baju"];

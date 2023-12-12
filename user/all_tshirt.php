@@ -1,6 +1,3 @@
-<?php 
-require'function.php';
-?>
 
 <?php require '../layouts/navbar_user.php'; ?>
 <div class="container mt-5 text-light">

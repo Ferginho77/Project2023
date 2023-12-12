@@ -1,4 +1,6 @@
 <?php 
+//MENAMBAHKAN FUNGSI EDIT KE FORM 
+
 require 'function.php';
 $id_pegawai = $_GET["id_pegawai"];
   if(isset($_GET["id_pegawai"])){

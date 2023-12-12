@@ -1,4 +1,5 @@
 <?php require'function.php';
+//FUNGSI TAMBAH PEMBELIAN BAJU
 if(isset($_POST["submit"])) {
     if(beli($_POST) > 0) {
      header("location:pembayaran3.php");

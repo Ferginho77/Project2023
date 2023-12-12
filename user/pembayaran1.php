@@ -1,4 +1,5 @@
 <?php require'function.php';
+//MEMBUAT TAMPILAN AGAR DATA YANG TERAKHIR DI INPUT TAMPIL
 $kelola_penjualan = query("SELECT * FROM kelola_penjualan ORDER BY id_penjualan DESC LIMIT 1");
 ?>
 <?php require '../layouts/navbar_user.php'; ?>
